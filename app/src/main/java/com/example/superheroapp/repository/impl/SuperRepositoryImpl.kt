@@ -8,7 +8,6 @@ class SuperRepositoryImpl: SuperRepository {
     override suspend fun getSuperHero(superId: Int): SuperHeroResponse {
         val superWebService = SuperHeroWebService()
         val hero = superWebService.getSuperHeroById(superId)
-
         return hero
     }
 }
