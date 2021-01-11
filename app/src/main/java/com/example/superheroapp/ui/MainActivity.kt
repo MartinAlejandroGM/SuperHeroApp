@@ -5,12 +5,10 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.superheroapp.R
 import com.example.superheroapp.adapters.SuperHeroRVAdapter
 import com.example.superheroapp.decoration.HeroDecoration
 import com.example.superheroapp.extensions.onLoadMore
-import com.example.superheroapp.models.SuperHeroResponse
 import com.example.superheroapp.viewmodel.SuperViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -21,9 +19,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         viewModel = SuperViewModel(application)
-        observeGames()
+        observeHeros()
         initRecyclerView()
         fetchFirstPage()
+
+        main_activity_toolbar.setTitle(R.string.tittle)
+        setSupportActionBar(main_activity_toolbar)
     }
 
     private fun initRecyclerView() {
@@ -36,12 +37,14 @@ class MainActivity : AppCompatActivity() {
             heroAdapter = SuperHeroRVAdapter()
             adapter = heroAdapter
             heroAdapter.onSuperHeroClickListener = {
+                val superHeroIntent = SuperHeroDetails.getIntent(this@MainActivity, it)
+                startActivity(superHeroIntent)
                 Toast.makeText(this@MainActivity, it.name, Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun observeGames() {
+    private fun observeHeros() {
         viewModel.superHeroLiveData.observe(this, Observer {
             heroAdapter.submitList(it)
         })
