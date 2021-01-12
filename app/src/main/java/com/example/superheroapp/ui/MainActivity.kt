@@ -1,8 +1,11 @@
 package com.example.superheroapp.ui
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.superheroapp.R
@@ -19,12 +22,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         viewModel = SuperViewModel(application)
-        observeHeros()
+        observeHeroes()
         initRecyclerView()
         fetchFirstPage()
 
         main_activity_toolbar.setTitle(R.string.tittle)
         setSupportActionBar(main_activity_toolbar)
+
+
     }
 
     private fun initRecyclerView() {
@@ -37,24 +42,41 @@ class MainActivity : AppCompatActivity() {
             heroAdapter = SuperHeroRVAdapter()
             adapter = heroAdapter
             heroAdapter.onSuperHeroClickListener = {
-                val superHeroIntent = SuperHeroDetails.getIntent(this@MainActivity, it)
+                val superHeroIntent = SuperHeroDetailsActivity.getIntent(this@MainActivity, it)
                 startActivity(superHeroIntent)
                 Toast.makeText(this@MainActivity, it.name, Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun observeHeros() {
+    private fun observeHeroes() {
         viewModel.superHeroLiveData.observe(this, Observer {
-            heroAdapter.submitList(it)
+            if (it == null || it.isEmpty() && heroAdapter.isEmpty()){
+                Toast.makeText(this@MainActivity, "No More Heroes found!", Toast.LENGTH_LONG).show()
+            } else {
+                heroAdapter.submitList(it)
+            }
         })
     }
 
-    private fun fetchFirstPage(){
+    private fun fetchFirstPage() {
         viewModel.fetchFirstPage()
     }
 
-    private fun fetchNextPage(){
+    private fun fetchNextPage() {
         viewModel.fetchNextPage()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.app_bar_search) {
+            startActivity(Intent(applicationContext, SearchHeroActivity::class.java))
+        }
+        return true
     }
 }

@@ -11,7 +11,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_super_hero_details.*
 
-class SuperHeroDetails : AppCompatActivity() {
+class SuperHeroDetailsActivity : AppCompatActivity() {
     private lateinit var viewPagerAdapter: ViewPageAdapter
     private lateinit var superHero: SuperHeroResponse
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,7 +80,7 @@ class SuperHeroDetails : AppCompatActivity() {
         private const val ARG_HERO_KEY = "${NAMESPACE}.game"
 
         fun getIntent(context: Context, superHero: SuperHeroResponse): Intent {
-            return Intent(context, SuperHeroDetails::class.java).apply {
+            return Intent(context, SuperHeroDetailsActivity::class.java).apply {
                 putExtra(ARG_HERO_KEY, superHero)
             }
 

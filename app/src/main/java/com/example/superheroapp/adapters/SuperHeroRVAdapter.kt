@@ -20,15 +20,19 @@ class SuperHeroRVAdapter : RecyclerView.Adapter<SuperHeroRVAdapter.SuperHeroView
         )
     }
 
+    fun clear(){
+        superHeroList.clear()
+        notifyDataSetChanged()
+    }
+
+    fun isEmpty() = superHeroList.isEmpty()
+
     fun submitList(heroList: List<SuperHeroResponse>, shouldClear: Boolean = false) {
         if (shouldClear) {
             superHeroList.clear()
         }
-        val size = superHeroList.size
         superHeroList.addAll(heroList)
-        val newSize = superHeroList.size
         notifyDataSetChanged()
-        notifyItemRangeChanged(size, newSize)
     }
 
     override fun onBindViewHolder(holder: SuperHeroViewHolder, position: Int) {
