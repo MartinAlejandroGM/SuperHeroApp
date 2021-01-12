@@ -5,9 +5,14 @@ import com.example.superheroapp.network.webservice.SuperHeroWebService
 import com.example.superheroapp.repository.SuperRepository
 
 class SuperRepositoryImpl: SuperRepository {
-    override suspend fun getSuperHero(superId: Int): SuperHeroResponse {
+    override suspend fun getSuperHero(superId: Int): SuperHeroResponse? {
         val superWebService = SuperHeroWebService()
-        val hero = superWebService.getSuperHeroById(superId)
-        return hero
+        return superWebService.getSuperHeroById(superId)
+    }
+
+    override suspend fun searchSuperHero(nameSearch: String): List<SuperHeroResponse>? {
+        val superWebService = SuperHeroWebService()
+        val result = superWebService.searchHero(nameSearch)
+        return result.results
     }
 }

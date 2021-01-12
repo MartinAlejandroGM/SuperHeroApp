@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/tittles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alter_egos" />
+
+        <TextView
+            android:id="@+id/alterEgos"
+            style="@style/data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/tittles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/aliases" />
+
+        <TextView
+            android:id="@+id/aliases"
+            style="@style/data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/tittles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/place_of_birth" />
+
+        <TextView
+            android:id="@+id/placeOfBirth"
+            style="@style/data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/tittles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/first_appearance" />
+
+        <TextView
+            android:id="@+id/firstAppearance"
+            style="@style/data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/tittles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/publisher" />
+
+        <TextView
+            android:id="@+id/publisher"
+            style="@style/data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/tittles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alignment" />
+
+        <TextView
+            android:id="@+id/alignment"
+            style="@style/data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
