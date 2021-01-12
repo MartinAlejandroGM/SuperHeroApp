@@ -1,4 +1,4 @@
-package com.example.superheroapp.adapters
+package com.example.superheroapp.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.fragment_connections.view.*
 import kotlinx.android.synthetic.main.fragment_power_stats.view.*
 import kotlinx.android.synthetic.main.fragment_work.view.*
 
-class ViewPageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SuperHeroDetailsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private lateinit var superHero: SuperHeroResponse
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

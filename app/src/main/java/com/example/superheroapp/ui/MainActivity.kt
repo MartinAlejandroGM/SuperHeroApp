@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.superheroapp.R
-import com.example.superheroapp.adapters.SuperHeroRVAdapter
+import com.example.superheroapp.adapter.SuperHeroListAdapter
 import com.example.superheroapp.decoration.HeroDecoration
 import com.example.superheroapp.extensions.onLoadMore
 import com.example.superheroapp.viewmodel.SuperViewModel
@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: SuperViewModel
-    private lateinit var heroAdapter: SuperHeroRVAdapter
+    private lateinit var heroAdapter: SuperHeroListAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                 fetchNextPage()
             }
             addItemDecoration(HeroDecoration())
-            heroAdapter = SuperHeroRVAdapter()
+            heroAdapter = SuperHeroListAdapter()
             adapter = heroAdapter
             heroAdapter.onSuperHeroClickListener = {
                 val superHeroIntent = SuperHeroDetailsActivity.getIntent(this@MainActivity, it)
