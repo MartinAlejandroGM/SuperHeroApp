@@ -5,14 +5,14 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.superheroapp.R
-import com.example.superheroapp.adapters.ViewPageAdapter
+import com.example.superheroapp.adapter.SuperHeroDetailsAdapter
 import com.example.superheroapp.models.SuperHeroResponse
 import com.google.android.material.tabs.TabLayoutMediator
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_super_hero_details.*
 
 class SuperHeroDetailsActivity : AppCompatActivity() {
-    private lateinit var viewPagerAdapter: ViewPageAdapter
+    private lateinit var viewPagerAdapter: SuperHeroDetailsAdapter
     private lateinit var superHero: SuperHeroResponse
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +66,7 @@ class SuperHeroDetailsActivity : AppCompatActivity() {
 
     private fun initViewPager() {
         pager.apply {
-            viewPagerAdapter = ViewPageAdapter()
+            viewPagerAdapter = SuperHeroDetailsAdapter()
             adapter = viewPagerAdapter
         }
     }

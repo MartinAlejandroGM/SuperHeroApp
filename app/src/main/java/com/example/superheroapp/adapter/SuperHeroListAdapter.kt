@@ -1,4 +1,4 @@
-package com.example.superheroapp.adapters
+package com.example.superheroapp.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,7 @@ import com.example.superheroapp.models.SuperHeroResponse
 import kotlinx.android.synthetic.main.super_hero_list_view.view.*
 import com.squareup.picasso.Picasso
 
-class SuperHeroRVAdapter : RecyclerView.Adapter<SuperHeroRVAdapter.SuperHeroViewHolder>() {
+class SuperHeroListAdapter : RecyclerView.Adapter<SuperHeroListAdapter.SuperHeroViewHolder>() {
     private var superHeroList = ArrayList<SuperHeroResponse>()
     var onSuperHeroClickListener: ((SuperHeroResponse) -> Unit)? = null
 

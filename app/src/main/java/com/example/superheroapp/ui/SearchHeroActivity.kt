@@ -8,7 +8,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.superheroapp.R
-import com.example.superheroapp.adapters.SuperHeroRVAdapter
+import com.example.superheroapp.adapter.SuperHeroListAdapter
 import com.example.superheroapp.decoration.HeroDecoration
 import com.example.superheroapp.viewmodel.SearchViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_super_hero_details.details_activi
 
 class SearchHeroActivity : AppCompatActivity() {
     private lateinit var viewModel: SearchViewModel
-    private lateinit var heroAdapter: SuperHeroRVAdapter
+    private lateinit var heroAdapter: SuperHeroListAdapter
     private var isEnterPressed = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +56,7 @@ class SearchHeroActivity : AppCompatActivity() {
         heroRecyclerView.apply {
             layoutManager = GridLayoutManager(this@SearchHeroActivity, 2)
             addItemDecoration(HeroDecoration())
-            heroAdapter = SuperHeroRVAdapter()
+            heroAdapter = SuperHeroListAdapter()
             adapter = heroAdapter
             heroAdapter.onSuperHeroClickListener = {
                 val superHeroIntent = SuperHeroDetailsActivity.getIntent(this@SearchHeroActivity, it)

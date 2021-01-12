@@ -14,12 +14,12 @@ import kotlinx.coroutines.launch
 
 class SuperViewModel(application: Application) : AndroidViewModel(application) {
     private val superHeroRepository = SuperRepositoryImpl()
-    private val _superHeroRepository: MutableLiveData<List<SuperHeroResponse>?> = MutableLiveData()
+    private val _superHeroLiveData: MutableLiveData<List<SuperHeroResponse>?> = MutableLiveData()
 
     var isLoading = false
     var currentHero = 1
     val superHeroLiveData: LiveData<List<SuperHeroResponse>?>
-        get() = _superHeroRepository
+        get() = _superHeroLiveData
 
     /*
     this error handler helps to handle the errors caused by no internet connections or errors caused in the scope
@@ -56,7 +56,7 @@ class SuperViewModel(application: Application) : AndroidViewModel(application) {
                 actualHero++
             }
             isLoading = false
-            _superHeroRepository.postValue(heroes)
+            _superHeroLiveData.postValue(heroes)
         }
     }
 }
